@@ -56,20 +56,14 @@ function PostProvider({ children }) {
     setIsLoader(true);
     const token = localStorage.getItem("token");
 
-    if (!token) {
-      setError("❌ אין טוקן במערכת");
-      setIsLoader(false);
-      return;
-    }
+    const headers = token ? { "x-auth-token": token } : {};
 
     try {
       const res = await fetch(
         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
         {
           method: "GET",
-          headers: {
-            "x-auth-token": token,
-          },
+          headers,
         }
       );
 
