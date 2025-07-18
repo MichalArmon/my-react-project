@@ -88,11 +88,14 @@ function PostProvider({ children }) {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`/api/bcard2/users/cards/${id}`, {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      const res = await fetch(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
+        {
+          headers: {
+            "x-auth-token": token,
+          },
+        }
+      );
 
       if (!res.ok) throw new Error("כשל בקבלת הכרטיס מהשרת");
       const data = await res.json();

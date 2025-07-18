@@ -23,7 +23,10 @@ export default function ThemeToggleButton() {
           style={{ fontSize: "1.6rem" }}
         ></ion-icon>
       ) : (
-        <ion-icon name="moon-outline" style={{ fontSize: "1.6rem" }}></ion-icon>
+        <ion-icon
+          name="moon-outline"
+          style={{ fontSize: "1.6rem", color: "#111" }}
+        ></ion-icon>
       )}
     </button>
   );
