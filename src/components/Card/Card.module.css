@@ -1,0 +1,70 @@
+.Card {
+
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #ffe8cc67;
+  border: 1px solid #ffe8cc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.imgWarper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  /* יחס גובה־רוחב קבוע */
+  overflow: hidden;
+
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+.image:hover {
+  transform: scale(1.8);
+}
+
+.cardDetails {
+  padding: 16px 20px;
+  flex-grow: 1;
+}
+
+.cardDetails h2 {
+  color: #ffa94d;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.cardDetails p {
+  font-size: 16px;
+  margin: 0.5em 0 0;
+}
+
+.cardInfo {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cardInfo p {
+  font-size: 12px;
+}
+
+.actions {
+  border-top: 1px solid #000;
+
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  /* מיישר לימין */
+
+  /* רווח בין האייקונים */
+  padding: 8px 20px;
+}

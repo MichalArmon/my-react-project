@@ -1,0 +1,14 @@
+.icon {
+
+  background-color: #ffa94d;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}

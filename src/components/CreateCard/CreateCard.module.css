@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff7f0;
+  border: 1px solid #ffa94d;
+  border-radius: 8px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #ffa94d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

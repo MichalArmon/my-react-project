@@ -1,0 +1,44 @@
+.AppNav {
+  align-items: center;
+  padding: 22px;
+  justify-content: space-between;
+  display: flex;
+  background: linear-gradient(to right, #ffaf59, hsla(33, 100%, 54%, 0.979), #ffaf59);
+  height: 45px;
+  position: fixed;
+
+}
+
+.UserNav {
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.btnLogin {
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+}
+
+.logo {
+
+  width: 125px;
+  height: auto;
+}
+
+header div {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+
+
+header button {
+  font-size: 14px;
+}

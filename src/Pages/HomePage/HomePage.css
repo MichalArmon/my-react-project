@@ -1,0 +1,46 @@
+.intro {
+  max-width: 1200px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 2rem;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.intro h1 {
+  display: block;
+  gap: 0;
+
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.homeContainer {
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  z-index: 1;
+
+}
+
+.homeBackgroundLogo {
+  position: absolute;
+  top: 42%;
+  right: 350px;
+  transform: translate(50%, -50%);
+  opacity: 0.06;
+  width: 40vw;
+  height: auto;
+  z-index: -500;
+  pointer-events: none;
+  /* כדי שלא יתפס קליקים */
+}

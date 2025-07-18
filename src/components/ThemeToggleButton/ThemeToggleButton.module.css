@@ -1,0 +1,38 @@
+/* דוגמה ל-CSS */
+.dark {
+  background-color: #111;
+  color: #eee;
+}
+
+.light {
+  background-color: #fff;
+  color: #111;
+}
+
+.btnDark {
+  border: none;
+  background-color: transparent;
+}
+
+/* button {
+  border: 1px solid #ffa94d;
+  background-color: #ffa94d;
+  font-weight: 700;
+  padding: 9px 24px;
+  cursor: pointer;
+} */
+
+:root {
+  --main-bg: white;
+  --main-text: #222;
+}
+
+body.dark-mode {
+  --main-bg: #111;
+  --main-text: #eee;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--main-text);
+}
