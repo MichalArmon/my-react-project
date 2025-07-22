@@ -6,62 +6,67 @@
 
 
 
-.login {
-  margin: 2.5rem;
-  padding: 2.5rem 5rem;
-  background-color: var(--color-dark--1);
-  min-height: calc(100vh - 5rem);
-}
 
 
-.formWarper {
+
+
+.signupForm {
+  width: 900px;
+  border-radius: 7px;
   margin: 0 auto;
   flex-direction: column;
   display: flex;
-  width: 400px;
-  background-color: #ffa94d3d;
+
+  background-color: #ffa94d33;
   padding: 2rem 2rem;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .form {
 
-
+  width: 700px;
   margin: 0 auto;
   background-color: var(--color-dark--2);
-  border-radius: 7px;
-  /* padding: 2rem 3rem; */
 
-  display: flex;
+
+
+
+  gap: 1rem;
+
+
+
+
+
+}
+
+.formGrid {
+  width: 100%;
+  max-width: 700px;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 65% 35%;
   align-items: center;
-  flex-direction: column;
-  gap: 3rem;
-
-
-
-
-
-}
-
-.actions {
-  display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
-.btnLogin {
-  padding: 0.8rem;
-  width: 12rem;
+.btnCreate {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  padding: 0.8rem
 }
 
-.line {
-  text-decoration: underline;
-}
+
 
 .row {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
 }
+
+
 
 
 

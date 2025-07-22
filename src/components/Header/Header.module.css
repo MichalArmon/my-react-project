@@ -4,8 +4,9 @@
   justify-content: space-between;
   display: flex;
   background: linear-gradient(to right, #ffaf59, hsla(33, 100%, 54%, 0.979), #ffaf59);
-  height: 45px;
+  height: 55px;
   position: fixed;
+  z-index: 1000000;
 
 }
 
@@ -22,7 +23,26 @@
 .btnLogin {
   border: none;
   background-color: transparent;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+.greeting {
+
+  color: #ffffff;
+}
+
+.profileIcon {
+  border: 1px solid #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #84ce7d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .logo {
@@ -41,4 +61,12 @@ header div {
 
 header button {
   font-size: 14px;
+}
+
+.logWarper {
+  gap: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }

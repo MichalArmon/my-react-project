@@ -21,10 +21,10 @@ export default function Card({ card }) {
         <Link to={`/card/${card._id}`}>
           <h2>{card.title}</h2>
         </Link>
-        <p>
+        <div>
           {" "}
           <ExpandableDescription text={card.description} />
-        </p>
+        </div>
       </div>
 
       <div className={styles.cardInfo}>
