@@ -1,0 +1,86 @@
+.warper {
+  margin-top: 50px;
+}
+
+
+
+
+
+
+.snackbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3d3d3d;
+
+  color: white;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadein 0.3s ease-out forwards, fadeout 0.3s ease-in 1.7s forwards;
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+  }
+}
+
+.cardGrid {
+  display: grid;
+  gap: 1rem;
+  /* gap-4 → 16px */
+  padding: 1rem;
+  /* p-4 → 16px */
+
+}
+
+
+@media (min-width: 640px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* md:grid-cols-3 */
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* lg:grid-cols-4 */
+@media (min-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+
+
+
+.addCard {
+  margin: 30px;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid #ffa94d;
+  background-color: #ffa94d;
+  font-weight: 600;
+  padding: 9px 24px;
+  cursor: pointer;
+  display: inline-block;
+
+}

@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useUser } from "./UserContext";
 
 const PostContext = createContext();
 
 function PostProvider({ children }) {
+  const { user } = useUser();
   const [posts, setPosts] = useState([]);
   const [card, setCard] = useState(null);
   const [isLoader, setIsLoader] = useState(false);
@@ -10,6 +12,18 @@ function PostProvider({ children }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
   const [likes, setLikes] = useState({});
+  const [myCards, setMyCards] = useState([]);
+  const userID = localStorage.getItem("userID");
+  false;
+
+  useEffect(() => {
+    if (user && userID) {
+      const filtered = posts.filter((post) => post.user_id === userID);
+      setMyCards(filtered);
+    } else {
+      setMyCards([]);
+    }
+  }, [posts, user]);
 
   // טען לייקים מה-localStorage
   useEffect(() => {
@@ -112,18 +126,30 @@ function PostProvider({ children }) {
   // ✅ יצירת כרטיס חדש
   async function addNewCard(cardData, token) {
     try {
-      const res = await fetch("/api/bcard2/users/cards", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": token,
-        },
-        body: JSON.stringify(cardData),
-      });
+      const res = await fetch(
+        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": token,
+          },
+          body: JSON.stringify(cardData),
+        }
+      );
 
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "שגיאה ביצירת כרטיס");
+        const contentType = res.headers.get("content-type");
+
+        let errorMessage;
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await res.json();
+          errorMessage = errorData.message || "שגיאה ביצירת כרטיס";
+        } else {
+          errorMessage = await res.text(); // ← זה יתפוס את ה־"Joi Error:"
+        }
+
+        throw new Error(errorMessage);
       }
 
       const newCard = await res.json();
@@ -139,6 +165,37 @@ function PostProvider({ children }) {
   useEffect(() => {
     getData();
   }, []);
+  // ✅ updatecard
+  const updateCard = async (id, updatedData) => {
+    const token = localStorage.getItem("token");
+    try {
+      setIsLoader(true);
+      const res = await fetch(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
+        {
+          method: "PuT",
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": token,
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "שגיאה בעדכון כרטיס");
+      }
+      const result = await res.json();
+      console.log("כרטיס עודכן בהצלחה:", result);
+      setPosts((prev) => prev.map((card) => (card._id === id ? result : card)));
+
+      return result;
+    } catch (err) {
+      console.error("שגיאה:", err.message);
+    } finally {
+      setIsLoader(false);
+    }
+  };
 
   return (
     <PostContext.Provider
@@ -160,6 +217,8 @@ function PostProvider({ children }) {
         addLike,
         removeLike,
         addNewCard,
+        updateCard,
+        myCards,
       }}
     >
       {children}

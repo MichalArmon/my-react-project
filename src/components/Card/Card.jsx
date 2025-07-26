@@ -2,8 +2,14 @@ import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 import LikeButton from "../Likes/LikeButton";
 import ExpandableDescription from "../ExpandableDescription/ExpandableDescription";
+import { useUser } from "../../context/UserContext";
 
 export default function Card({ card }) {
+  const { user } = useUser();
+
+  const isOwner = user?._id === card.user_id;
+  // console.log("user._id:", user?._id);
+  // console.log("card.user_id:", card.user_id);
   return (
     <div className={styles.Card}>
       {/* תמונה מקשרת לדף מורחב */}
@@ -48,6 +54,16 @@ export default function Card({ card }) {
       </div>
 
       <div className={styles.actions}>
+        {isOwner ? (
+          <Link to={`/update/${card._id}`}>
+            <ion-icon
+              name="create-outline"
+              style={{ fontSize: "1.2rem" }}
+            ></ion-icon>
+          </Link>
+        ) : (
+          ""
+        )}
         <div>
           {" "}
           <LikeButton cardId={card._id} />

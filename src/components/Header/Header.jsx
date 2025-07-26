@@ -10,7 +10,12 @@ import { useUser } from "../../context/UserContext";
 
 export default function Header() {
   const { onClearPosts } = usePosts();
-  const { currentUser, loginUser, setLoginUser } = useUser();
+  const { user } = useUser();
+  // const firstName = user?.name?.first || "";
+
+  const firstName = user?.name?.first;
+  const firstLetter = firstName ? firstName.slice(0, 1).toUpperCase() : "";
+  const formattedFirstName = firstName ? firstLetter + firstName.slice(1) : "";
 
   return (
     <header>
@@ -22,25 +27,23 @@ export default function Header() {
         </Link>
         <div className={styles.logWarper}>
           <span className={styles.greeting}>
-            {currentUser?.name?.first
-              ? `Welcome ${currentUser.name.first} `
+            {user && firstName
+              ? `Welcome ${formattedFirstName} `
               : "Welcome guest"}
           </span>
           <Link to="/login" className={styles.btnLogin}>
-            {currentUser ? (
-              <div className={styles.profileIcon}>
-                {currentUser.name.first.slice(0, 1).toUpperCase()}
-              </div>
+            {user ? (
+              <div className={styles.profileIcon}>{firstLetter}</div>
             ) : (
               <ion-icon
                 name="person-circle-outline"
-                style={{ color: "#ffffffff", fontSize: "1.6rem" }}
+                style={{ color: "#ffffffff", fontSize: "2rem" }}
               ></ion-icon>
             )}
           </Link>
         </div>
       </nav>
-      {loginUser ? (
+      {user ? (
         <nav>
           <div className={styles.UserNav}>
             <Link to="/about">About</Link>

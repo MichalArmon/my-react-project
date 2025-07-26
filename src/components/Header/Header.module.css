@@ -6,19 +6,30 @@
   background: linear-gradient(to right, #ffaf59, hsla(33, 100%, 54%, 0.979), #ffaf59);
   height: 55px;
   position: fixed;
+  top: 0;
   z-index: 1000000;
 
 }
 
 .UserNav {
+  width: 100vw;
+  background-color: #ffffff;
   gap: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 900px;
+  /* width: 900px; */
   margin: 0 auto;
-  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 10PX;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
+
+.navWarper {}
 
 .btnLogin {
   border: none;
@@ -51,11 +62,12 @@
   height: auto;
 }
 
+/* 
 header div {
   display: flex;
   gap: 32px;
   align-items: center;
-}
+} */
 
 
 

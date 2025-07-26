@@ -1,10 +1,11 @@
 import { useState } from "react";
-import styles from "./CreateCard.module.css";
+import styles from "./UpdateCard.module.css";
 import { usePosts } from "../../context/PostContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 useNavigate;
-export default function CreateCard() {
-  const { addNewCard } = usePosts();
+export default function UpdateCard() {
+  const { id } = useParams();
+  const { updateCard } = usePosts();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -74,43 +75,27 @@ export default function CreateCard() {
         country: "Israel",
         city: form.address.city,
         street: form.address.street,
-        houseNumber: 1,
-        zip: 12345,
+        houseNumber: Number(form.address.houseNumber),
+        zip: Number(form.address.zip),
       },
     };
 
     try {
-      const newCard = await addNewCard(cardData, token);
-      console.log("כרטיס חדש:", newCard);
+      const updatedCard = await updateCard(id, cardData);
+      console.log("updatedCard:", updatedCard);
+
       navigate("/myCards");
 
-      // setForm({
-      //   title: "",
-      //   subtitle: "",
-      //   description: "",
-      //   phone: "",
-      //   web: "",
-      //   image: { url: "", alt: "" },
-      //   address: {
-      //     state: "Israel",
-      //     country: "israel",
-      //     city: "",
-      //     street: "",
-      //     houseNumber: "",
-      //     zip: "",
-      //   },
-      // });
-
-      alert("כרטיס נוצר בהצלחה!");
+      alert("Card updated successfully!");
+      console.log("🆔 useParams id:", id);
     } catch (err) {
       console.error(err);
-      alert("שגיאה ביצירת הכרטיס");
+      alert("Error updating card");
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2>Create new card</h2>
       <div className={styles.formGrid}>
         <input
           type="text"
@@ -225,7 +210,7 @@ export default function CreateCard() {
         />
       </div>
 
-      <button type="submit">Create card</button>
+      <button type="submit">Update card</button>
     </form>
   );
 }

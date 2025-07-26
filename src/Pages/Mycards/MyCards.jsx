@@ -5,7 +5,6 @@ import styles from "./Mycards.module.css";
 function Mycards() {
   return (
     <div>
-      <CreateCard />
       <MyCardsList />
     </div>
   );

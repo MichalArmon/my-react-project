@@ -4,8 +4,14 @@ import Spinner from "../../components/Spinner/Spinner";
 import { usePosts } from "../../context/PostContext";
 import logo from "../../assets/logoB.svg"; // ודאי שהנתיב תקין
 
+import { useEffect } from "react";
+
 function HomePage() {
-  const { isLoader } = usePosts();
+  const { setIsLoader, isLoader } = usePosts();
+
+  useEffect(() => {
+    setIsLoader(false);
+  }, []);
 
   if (isLoader) return <Spinner />;
   return (
