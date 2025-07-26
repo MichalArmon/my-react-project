@@ -7,7 +7,7 @@ import logo from "../../assets/logoB.svg"; // ודאי שהנתיב תקין
 import { useEffect } from "react";
 
 function HomePage() {
-  const { setIsLoader, isLoader } = usePosts();
+  const { setIsLoader, isLoader, isDark } = usePosts();
 
   useEffect(() => {
     setIsLoader(false);
@@ -16,7 +16,11 @@ function HomePage() {
   if (isLoader) return <Spinner />;
   return (
     <div className="homeContainer">
-      <img src={logo} alt="Logo" className="homeBackgroundLogo" />
+      {!isDark ? (
+        <img src={logo} alt="Logo" className="homeBackgroundLogo" />
+      ) : (
+        ""
+      )}
       <div className="intro">
         <h1>Welcome to our digital business card service! </h1>
         <p>

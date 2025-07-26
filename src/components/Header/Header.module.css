@@ -1,4 +1,5 @@
 .AppNav {
+  color: white;
   align-items: center;
   padding: 22px;
   justify-content: space-between;
@@ -13,7 +14,7 @@
 
 .UserNav {
   width: 100vw;
-  background-color: #ffffff;
+  background-color: var(--main-bg);
   gap: 12px;
   display: flex;
   align-items: center;
@@ -26,10 +27,20 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 100000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-.navWarper {}
+.modeIcon {
+  color: white;
+  padding: 0;
+}
+
+.leftSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px
+}
 
 .btnLogin {
   border: none;
@@ -81,4 +92,8 @@ header button {
   justify-content: center;
   align-items: center;
   height: auto;
+}
+
+.clear {
+  color: white;
 }

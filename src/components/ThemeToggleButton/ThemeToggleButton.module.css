@@ -1,4 +1,6 @@
-/* דוגמה ל-CSS */
+/* ThemeToggleButton.module.css */
+
+/* קלאסים רגילים למרכיבים ספציפיים */
 .dark {
   background-color: #111;
   color: #eee;
@@ -10,29 +12,28 @@
 }
 
 .btnDark {
+  padding: 0;
   border: none;
   background-color: transparent;
 }
 
-/* button {
-  border: 1px solid #ffa94d;
-  background-color: #ffa94d;
-  font-weight: 700;
-  padding: 9px 24px;
-  cursor: pointer;
-} */
-
-:root {
+/* משתנים גלובליים למצב ברירת מחדל (בהיר) */
+:global(:root) {
   --main-bg: white;
   --main-text: #222;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+
 }
 
-body.dark-mode {
+/* משתנים גלובליים למצב כהה */
+:global(:root.dark-mode) {
   --main-bg: #111;
   --main-text: #eee;
+  --shadow-color: rgba(255, 164, 27, 0.1);
 }
 
-body {
+/* רקע וטקסט של body לפי משתנים */
+:global(body) {
   background-color: var(--main-bg);
   color: var(--main-text);
 }

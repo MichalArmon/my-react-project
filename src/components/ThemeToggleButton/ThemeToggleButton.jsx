@@ -11,8 +11,14 @@ export default function ThemeToggleButton() {
   }
 
   useEffect(() => {
-    document.body.classList.toggle("dark-mode", isDark);
-    document.body.classList.toggle("light-mode", !isDark);
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add("dark-mode");
+      root.classList.remove("light-mode");
+    } else {
+      root.classList.remove("dark-mode");
+      root.classList.add("light-mode");
+    }
   }, [isDark]);
 
   return (
@@ -23,10 +29,7 @@ export default function ThemeToggleButton() {
           style={{ fontSize: "1.6rem" }}
         ></ion-icon>
       ) : (
-        <ion-icon
-          name="moon-outline"
-          style={{ fontSize: "1.6rem", color: "#111" }}
-        ></ion-icon>
+        <ion-icon name="moon-outline" style={{ fontSize: "1.6rem" }}></ion-icon>
       )}
     </button>
   );

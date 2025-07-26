@@ -53,7 +53,7 @@ function PostProvider({ children }) {
   }
 
   function handleClearPosts() {
-    setPosts([]);
+    setSearchQuery("");
   }
 
   const searchedPosts =

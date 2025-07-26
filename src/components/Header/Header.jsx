@@ -20,6 +20,10 @@ export default function Header() {
   return (
     <header>
       <nav className={styles.AppNav}>
+        <div className={styles.leftSide}>
+          <ThemeToggleButton className={styles.modeIcon} />
+          <Link to="/about">About</Link>
+        </div>
         <Link to="/">
           <div className={styles.logo}>
             <img src={logo} alt="My App Logo" className="logo" />
@@ -46,12 +50,12 @@ export default function Header() {
       {user ? (
         <nav>
           <div className={styles.UserNav}>
-            <Link to="/about">About</Link>
             <Link to="/fav">Fav cards</Link>
             <Link to="/myCards">My Cards</Link>
             <SearchPosts />
-            <button onClick={onClearPosts}>Clear posts</button>
-            <ThemeToggleButton />
+            <button className={styles.clear} onClick={onClearPosts}>
+              Clear search
+            </button>
           </div>
         </nav>
       ) : (
