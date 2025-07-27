@@ -1,0 +1,55 @@
+.adminUsersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 50px;
+  /* overflow-x: hidden; */
+}
+
+.adminUsersContainer h2 {
+
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.adminUsersTable {
+
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  /* overflow: hidden; */
+}
+
+.adminUsersTable thead {
+  background-color: #f4f6f8;
+}
+
+.adminUsersTable th,
+.adminUsersTable td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.adminUsersTable th {
+  font-weight: 600;
+  color: #555;
+}
+
+.adminUsersTable tbody tr:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.adminUsersTable td svg {
+  font-size: 1.2rem;
+}

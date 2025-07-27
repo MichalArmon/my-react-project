@@ -64,6 +64,10 @@ export default function Header() {
       {user ? (
         <nav>
           <div className={styles.UserNav}>
+            {user?.isAdmin && (
+              <Link to="/adminUsersPage">Admin Users Page</Link>
+            )}
+
             <Link to="/fav">Fav cards</Link>
             <Link to="/myCards">My Cards</Link>
             <Link to={"/create"} className={styles.addCard}>

@@ -15,6 +15,7 @@ import "./index.css";
 import { PostProvider } from "./context/PostContext.jsx";
 import { UserProvider } from "./context/UserContext";
 import Footer from "./components/Footer/Footer.jsx";
+import AdminUsersPage from "./Pages/AdminUsersPage/AdminUsersPage.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Header />
         <div className="container mx-auto px-4">
           <Routes>
+            <Route path="/adminUsersPage" element={<AdminUsersPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
