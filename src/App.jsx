@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import Header from "./components/Header/Header";
 import BigCard from "./components/BigCard/BigCard.jsx";
 import HomePage from "./Pages/HomePage/HomePage.jsx";
-import About from "./Pages/About.jsx";
+import About from "./Pages/About/About";
 import Login from "./Pages/Login/Login.jsx";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage.jsx";
 import MyCards from "./Pages/Mycards/MyCards.jsx";
@@ -14,6 +14,7 @@ import UpdateCard from "./components/UpdateCard/UpdateCard.jsx";
 import "./index.css";
 import { PostProvider } from "./context/PostContext.jsx";
 import { UserProvider } from "./context/UserContext";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/update/:id" element={<UpdateCard />} />
           </Routes>
         </div>
+        <Footer />
       </PostProvider>
     </UserProvider>
   );

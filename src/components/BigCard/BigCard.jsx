@@ -11,7 +11,7 @@ function BigCard() {
   const { fetchCardById, isLoader, card, error } = usePosts();
 
   useEffect(() => {
-    fetchCardById(id); // רק קוראת לפונקציה פעם אחת
+    fetchCardById(id);
   }, [id]);
 
   if (isLoader) return <Spinner />;

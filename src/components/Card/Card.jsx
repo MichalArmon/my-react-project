@@ -55,18 +55,25 @@ export default function Card({ card }) {
 
       <div className={styles.actions}>
         {isOwner ? (
-          <Link to={`/update/${card._id}`}>
+          <div className={styles.userActions}>
+            {" "}
             <ion-icon
-              name="create-outline"
+              name="close-outline"
               style={{ fontSize: "1.2rem" }}
             ></ion-icon>
-          </Link>
+            <Link to={`/update/${card._id}`}>
+              <ion-icon
+                name="create-outline"
+                style={{ fontSize: "1.2rem" }}
+              ></ion-icon>{" "}
+            </Link>
+          </div>
         ) : (
           ""
         )}
-        <div>
+        <div className={styles.actionsRightSide}>
           {" "}
-          <LikeButton cardId={card._id} />
+          {user ? <LikeButton cardId={card._id} /> : ""}
         </div>
         <div>
           <a href={`tel:${card.phone}`}>

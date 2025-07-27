@@ -20,7 +20,7 @@ export default function FavoritesPage() {
     return <p className={styles.empty}>לא הוספת מועדפים עדיין.</p>;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-4">
+    <div className={styles.cardGrid}>
       {favoritePosts.map((post) => (
         <Card key={post._id} card={post} />
       ))}

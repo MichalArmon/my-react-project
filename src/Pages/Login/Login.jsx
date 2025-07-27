@@ -5,7 +5,7 @@ import { useUser } from "../../context/UserContext";
 import Spinner from "../../components/Spinner/Spinner";
 
 function Login() {
-  const [email, setEmail] = useState("piggy@gmail.com");
+  const [email, setEmail] = useState("mnewuser@example.com");
   const [password, setPassword] = useState("Abc!123Abc");
   const navigate = useNavigate();
 

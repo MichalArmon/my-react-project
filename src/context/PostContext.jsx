@@ -115,9 +115,9 @@ function PostProvider({ children }) {
       const data = await res.json();
       setCard(data);
       setError("");
+      return data;
     } catch (err) {
       setError(err.message || "שגיאה כללית");
-      setCard(null);
     } finally {
       setIsLoader(false);
     }
@@ -168,12 +168,14 @@ function PostProvider({ children }) {
   // ✅ updatecard
   const updateCard = async (id, updatedData) => {
     const token = localStorage.getItem("token");
+
     try {
       setIsLoader(true);
+
       const res = await fetch(
         `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
         {
-          method: "PuT",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "x-auth-token": token,
@@ -181,17 +183,28 @@ function PostProvider({ children }) {
           body: JSON.stringify(updatedData),
         }
       );
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "שגיאה בעדכון כרטיס");
-      }
-      const result = await res.json();
-      console.log("כרטיס עודכן בהצלחה:", result);
-      setPosts((prev) => prev.map((card) => (card._id === id ? result : card)));
 
+      let result;
+      const contentType = res.headers.get("content-type");
+
+      if (!res.ok) {
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await res.json();
+          throw new Error(errorData.message || "שגיאה בעדכון כרטיס");
+        } else {
+          const errorText = await res.text();
+          throw new Error("שגיאת שרת: " + errorText);
+        }
+      }
+
+      result = await res.json();
+      console.log("כרטיס עודכן בהצלחה:", result);
+
+      setPosts((prev) => prev.map((card) => (card._id === id ? result : card)));
       return result;
     } catch (err) {
-      console.error("שגיאה:", err.message);
+      console.error("❌ שגיאה:", err.message);
+      throw err; // חשוב להחזיר את השגיאה למעלה כדי ש־UpdateCard.jsx תוכל לטפל בה
     } finally {
       setIsLoader(false);
     }

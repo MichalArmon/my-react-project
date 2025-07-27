@@ -1,33 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./UpdateCard.module.css";
 import { usePosts } from "../../context/PostContext";
 import { useNavigate, useParams } from "react-router-dom";
+
 useNavigate;
 export default function UpdateCard() {
   const { id } = useParams();
-  const { updateCard } = usePosts();
+  const { updateCard, fetchCardById } = usePosts();
+
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    title: "Green Garden",
-    subtitle: "Your local plant expert",
-    description: "We offer a wide variety of indoor and outdoor plants,",
-    phone: "03-7654321",
-    email: "info@greengarden.co.il",
-    web: "https://greengarden.co.il",
-    image: {
-      url: "https://picsum.photos/300/200",
-      alt: "Photo of Green Garden shop front",
-    },
-    address: {
-      state: "Israel",
-      country: "israel",
-      city: "Ramat Gan",
-      street: "HaYarkon",
-      houseNumber: "12",
-      zip: "5250000",
-    },
-  });
+  const [form, setForm] = useState(null);
+
+  useEffect(() => {
+    async function fetchCard() {
+      try {
+        const card = await fetchCardById(id);
+        setForm(card); // מילוי הטופס לפי הכרטיס שקיבלנו
+      } catch (err) {
+        console.error("❌ שגיאה בטעינת כרטיס:", err);
+      }
+    }
+
+    fetchCard();
+  }, [id]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -93,6 +89,7 @@ export default function UpdateCard() {
       alert("Error updating card");
     }
   }
+  if (!form) return <p>Loading card...</p>;
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>

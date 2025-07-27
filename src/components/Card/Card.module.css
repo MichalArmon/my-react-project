@@ -58,13 +58,30 @@
 }
 
 .actions {
-  border-top: 1px solid #000;
-
+  color: #ffa94d;
+  background-color: #fff7f0;
   align-items: center;
   display: flex;
-  justify-content: flex-end;
-  /* מיישר לימין */
+  justify-content: space-between;
 
-  /* רווח בין האייקונים */
+
+
   padding: 8px 20px;
+}
+
+.actionsRightSide {
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.userActions {
+
+
+  gap: 12px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

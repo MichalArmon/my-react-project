@@ -1,5 +1,6 @@
 import Card from "../Card/Card";
 import { usePosts } from "../../context/PostContext.jsx";
+import styles from "./ExampleCards.module.css";
 // import { useEffect, useState } from "react";
 
 // function getRandomCards(cards, count = 4) {
@@ -20,7 +21,7 @@ export default function ExampleCards() {
   //   }, [posts]); // מריץ רק כש-posts משתנה
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-4">
+    <div className={styles.cardGrid}>
       {posts.map((card) => (
         <Card key={card._id} card={card} />
       ))}

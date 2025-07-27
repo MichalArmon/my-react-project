@@ -35,7 +35,7 @@ textarea {
   border-radius: 4px;
 }
 
-button {
+.btnCreate {
   background-color: #ffa94d;
   color: white;
   font-weight: bold;

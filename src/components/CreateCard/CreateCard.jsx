@@ -225,7 +225,9 @@ export default function CreateCard() {
         />
       </div>
 
-      <button type="submit">Create card</button>
+      <button type="submit" className={styles.btnCreate}>
+        Create card
+      </button>
     </form>
   );
 }

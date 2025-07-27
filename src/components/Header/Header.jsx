@@ -7,6 +7,8 @@ import styles from "./Header.module.css";
 import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import logo from "../../assets/logo.svg";
 import { useUser } from "../../context/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
   const { onClearPosts } = usePosts();
@@ -23,26 +25,38 @@ export default function Header() {
         <div className={styles.leftSide}>
           <ThemeToggleButton className={styles.modeIcon} />
           <Link to="/about">About</Link>
+          <SearchPosts />
+          <button className={styles.clear} onClick={onClearPosts}>
+            Clear
+          </button>
         </div>
-        <Link to="/">
-          <div className={styles.logo}>
-            <img src={logo} alt="My App Logo" className="logo" />
-          </div>
-        </Link>
+        <div className={styles.middlePart}>
+          <Link to="/">
+            <div className={styles.logo}>
+              <img src={logo} alt="My App Logo" className="logo" />
+            </div>
+          </Link>
+        </div>
         <div className={styles.logWarper}>
           <span className={styles.greeting}>
-            {user && firstName
-              ? `Welcome ${formattedFirstName} `
-              : "Welcome guest"}
+            {user && firstName ? (
+              <>
+                Welcome <strong>{formattedFirstName}</strong>
+              </>
+            ) : (
+              <span>
+                Welcome <strong>Guest</strong>
+              </span>
+            )}
           </span>
           <Link to="/login" className={styles.btnLogin}>
             {user ? (
               <div className={styles.profileIcon}>{firstLetter}</div>
             ) : (
-              <ion-icon
-                name="person-circle-outline"
-                style={{ color: "#ffffffff", fontSize: "2rem" }}
-              ></ion-icon>
+              <FontAwesomeIcon
+                icon={faUser}
+                style={{ color: "#fff", fontSize: "1.2rem" }}
+              />
             )}
           </Link>
         </div>
@@ -52,10 +66,9 @@ export default function Header() {
           <div className={styles.UserNav}>
             <Link to="/fav">Fav cards</Link>
             <Link to="/myCards">My Cards</Link>
-            <SearchPosts />
-            <button className={styles.clear} onClick={onClearPosts}>
-              Clear search
-            </button>
+            <Link to={"/create"} className={styles.addCard}>
+              +
+            </Link>
           </div>
         </nav>
       ) : (

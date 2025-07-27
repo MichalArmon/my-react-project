@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { usePosts } from "../../context/PostContext";
 import styles from "./ThemeToggleButton.module.css";
 import React from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 export default function ThemeToggleButton() {
   const { isDark, setIsDark } = usePosts();
 
@@ -24,12 +25,17 @@ export default function ThemeToggleButton() {
   return (
     <button onClick={toggleTheme} className={styles.btnDark}>
       {isDark ? (
-        <ion-icon
+        <FontAwesomeIcon
+          icon={faSun}
           name="sunny-outline"
           style={{ fontSize: "1.6rem" }}
-        ></ion-icon>
+        />
       ) : (
-        <ion-icon name="moon-outline" style={{ fontSize: "1.6rem" }}></ion-icon>
+        <FontAwesomeIcon
+          icon={faMoon}
+          name="moon-outline"
+          style={{ fontSize: "1.6rem" }}
+        />
       )}
     </button>
   );
