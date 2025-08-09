@@ -57,11 +57,12 @@
   font-size: 40px;
 }
 
+/* 
 .greeting {
   font-weight: 500;
 
   color: #ffffff;
-}
+} */
 
 .profileIcon {
   border: 1px solid #ffffff;
@@ -92,19 +93,21 @@
 
 
 
+
+/* 
 .logo {
 
   width: 125px;
   height: auto;
 
 
-}
+} */
 
-.middlePart {
+/* .middlePart {
   display: flex;
   flex: 1;
   justify-content: center;
-}
+} */
 
 
 
@@ -121,7 +124,7 @@ header button {
   font-size: 14px;
 }
 
-.logWarper {
+/* .logWarper {
   justify-content: flex-end;
   flex: 1;
   gap: 0.5rem;
@@ -129,9 +132,9 @@ header button {
 
   align-items: center;
   height: auto;
-}
+} */
 
-.clear {
+/* .clear {
   background-color: white;
   color: #ffa94d;
-}
+} */

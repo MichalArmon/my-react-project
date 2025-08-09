@@ -16,6 +16,7 @@
 
 
 .formWarper {
+
   margin: 0 auto;
   flex-direction: column;
   display: flex;
@@ -60,7 +61,7 @@
 .btnLogin {
   color: white;
   padding: 0.8rem;
-  width: 12rem;
+
 }
 
 .line {

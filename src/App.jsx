@@ -16,15 +16,17 @@ import { PostProvider } from "./context/PostContext.jsx";
 import { UserProvider } from "./context/UserContext";
 import Footer from "./components/Footer/Footer.jsx";
 import AdminUsersPage from "./Pages/AdminUsersPage/AdminUsersPage.jsx";
+import UpdateUser from "./components/UpdateUser/UpdateUser.jsx";
+import AppLayout from "./Pages/AppLayout.jsx";
 
 function App() {
   return (
     <UserProvider>
       <PostProvider>
-        <Header />
-        <div className="container mx-auto px-4">
-          <Routes>
+        <Routes>
+          <Route Route element={<AppLayout />}>
             <Route path="/adminUsersPage" element={<AdminUsersPage />} />
+            <Route path="/updateUser/:id" element={<UpdateUser />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
@@ -34,9 +36,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/create" element={<CreateCard />} />
             <Route path="/update/:id" element={<UpdateCard />} />
-          </Routes>
-        </div>
-        <Footer />
+          </Route>
+        </Routes>
       </PostProvider>
     </UserProvider>
   );

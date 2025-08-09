@@ -21,7 +21,7 @@ function UserProvider({ children }) {
     setTimeout(() => setIsSnackbar(false), 2000);
   };
 
-  // 🧠 פענוח טוקן JWT
+  // JWT
   function decodeToken(token) {
     try {
       const payload = token.split(".")[1];
@@ -87,7 +87,7 @@ function UserProvider({ children }) {
   async function logout() {
     setIsLoader(true);
     try {
-      localStorage.clear(); // מוחק את כל הנתונים
+      localStorage.clear();
       setUser(null);
       setCurrentUser(null);
       setLoginUser(false);
@@ -97,7 +97,7 @@ function UserProvider({ children }) {
     }
   }
 
-  // GETUSER✅
+  // GET USER✅
   const getUser = async (id) => {
     const token = localStorage.getItem("token");
 
@@ -113,6 +113,25 @@ function UserProvider({ children }) {
 
     const data = await res.json();
     console.log("🎯 getUser data:", data);
+    return data;
+  };
+
+  // UPDATE USER✅
+  const updateUser = async (token, id, updatedUser) => {
+    const res = await fetch(
+      `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUser),
+      }
+    );
+
+    const data = await res.json();
+    console.log("🎯 updated data:", data);
     return data;
   };
 
@@ -134,6 +153,7 @@ function UserProvider({ children }) {
         setLoginUser,
         userType,
         logout,
+        updateUser,
       }}
     >
       {children}

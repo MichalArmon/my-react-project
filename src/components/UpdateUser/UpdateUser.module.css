@@ -12,32 +12,43 @@
 
 .signupForm {
 
-  max-width: 700px;
+  width: 900px;
   border-radius: 7px;
-  margin: 2rem auto;
-
+  margin: 150px auto;
   flex-direction: column;
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  background-color: #fde68a;
-  border: 1px solid #eab308;
+  background-color: #fff7f0;
+  border: 1px solid #ffa94d;
   padding: 2rem 2rem;
+  gap: 1rem;
+
+
+}
+
+.form {
+
+  width: 700px;
+  margin: 0 auto;
+  background-color: var(--color-dark--2);
+
+
+
+
+  gap: 1rem;
+
+
 
 
 
 }
 
-
-
 .formGrid {
   width: 100%;
+  max-width: 700px;
   gap: 1rem;
-  column-gap: 3rem;
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 65% 35%;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
@@ -52,8 +63,22 @@
   color: white;
 }
 
+.formGrid input,
+.formGrid textarea {
+  width: 12rem;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #ffffffc6;
+}
 
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
+}
 
 
 

@@ -15,14 +15,16 @@ function HomePage() {
 
   if (isLoader) return <Spinner />;
   return (
-    <div className="homeContainer">
+    <div className="flex flex-col">
       {!isDark ? (
         <img src={logo} alt="Logo" className="homeBackgroundLogo" />
       ) : (
         ""
       )}
-      <div className="intro">
-        <h1>Welcome to our digital business card service! </h1>
+      <div className="max-w-[1200px] mx-auto text-center mt-4 ">
+        <h1 className="text-2xl mb-2 text-center">
+          Welcome to our digital business card service!{" "}
+        </h1>
         <p>
           This page showcases a sample of four beautifully designed digital
           business cards. Our platform offers a modern, convenient way to share

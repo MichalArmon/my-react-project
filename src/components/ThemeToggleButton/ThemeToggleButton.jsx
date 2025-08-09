@@ -26,6 +26,7 @@ export default function ThemeToggleButton() {
     <button onClick={toggleTheme} className={styles.btnDark}>
       {isDark ? (
         <FontAwesomeIcon
+          className="text-sm"
           icon={faSun}
           name="sunny-outline"
           style={{ fontSize: "1.6rem" }}

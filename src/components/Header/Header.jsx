@@ -21,24 +21,32 @@ export default function Header() {
 
   return (
     <header>
-      <nav className={styles.AppNav}>
-        <div className={styles.leftSide}>
-          <ThemeToggleButton className={styles.modeIcon} />
-          <Link to="/about">About</Link>
+      <nav
+        className="text-stone-100 bg-amber-400 px-2  max-w-screen flex items-center justify-between border-b border-stone-200  py-2 sm:px-6   min-h-[60px]
+     "
+      >
+        <div className="flex gap-0.1 items-center sm:gap-2  sm:flex flex-1 ">
+          <ThemeToggleButton className="text-stone-100" />
+          <Link to="/about" className="hidden md:block">
+            About
+          </Link>
           <SearchPosts />
-          <button className={styles.clear} onClick={onClearPosts}>
+          {/* <button
+            className="text-orange-400 bg-stone-100 hidden md:block"
+            onClick={onClearPosts}
+          >
             Clear
-          </button>
+          </button> */}
         </div>
-        <div className={styles.middlePart}>
+        <div className="flex flex-1 justify-start sm:justify-center ">
           <Link to="/">
-            <div className={styles.logo}>
-              <img src={logo} alt="My App Logo" className="logo" />
+            <div className="min-w-[150px] h-auto sm:min-w-[175px]  ">
+              <img src={logo} alt="My App Logo" />
             </div>
           </Link>
         </div>
-        <div className={styles.logWarper}>
-          <span className={styles.greeting}>
+        <div className="flex items-center gap-2 flex-1 justify-end ">
+          <span className="hidden md:block font-semibold text-stone-100">
             {user && firstName ? (
               <>
                 Welcome <strong>{formattedFirstName}</strong>
@@ -63,16 +71,36 @@ export default function Header() {
       </nav>
       {user ? (
         <nav>
-          <div className={styles.UserNav}>
+          <div
+            className=" flex flex-row    max-w-screen bg-stone-50  items-center justify-center mx-auto p-4 gap-2 "
+            style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.09)" }}
+          >
             {user?.isAdmin && (
-              <Link to="/adminUsersPage">Admin Users Page</Link>
+              <>
+                <Link to="/adminUsersPage">CRM system</Link>{" "}
+                <hr className="h-5 w-px bg-stone-500 opacity-50" />
+              </>
             )}
 
-            <Link to="/fav">Fav cards</Link>
-            <Link to="/myCards">My Cards</Link>
-            <Link to={"/create"} className={styles.addCard}>
-              +
+            <Link
+              className="hover:text-amber-300 text-stone-500 tracking-tight uppercase text-sm font-semibold"
+              to="/fav"
+            >
+              Fav cards
             </Link>
+            <hr className="h-5 w-px bg-stone-500 opacity-50" />
+            <Link
+              to="/myCards"
+              className="hover:text-amber-300 text-stone-500 tracking-tight uppercase text-sm font-semibold"
+            >
+              My Cards
+            </Link>
+            {/* <Link
+              to={"/create"}
+              className="font-semibold inline-block px-2 py-[2px]   uppercase bg-amber-400 cursor-pointer text-stone-100 rounded-md hover:bg-amber-300 transition-all duration-300 focus:outline-none focus:ring"
+            >
+              +
+            </Link> */}
           </div>
         </nav>
       ) : (

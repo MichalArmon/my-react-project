@@ -1,17 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+
+// 👇 הוספת tailwindcss
+import tailwindcss from "tailwindcss";
+import postcss from "./postcss.config.cjs";
 
 export default defineConfig({
-  base: "/my-react-project/",
-  plugins: [react(), tailwindcss()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://monkfish-app-z9uza.ondigitalocean.app",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
+  plugins: [react()],
 });

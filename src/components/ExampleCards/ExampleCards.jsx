@@ -21,9 +21,9 @@ export default function ExampleCards() {
   //   }, [posts]); // מריץ רק כש-posts משתנה
 
   return (
-    <div className={styles.cardGrid}>
+    <div className="flex flex-wrap  gap-4 mt-6  justify-center ">
       {posts.map((card) => (
-        <Card key={card._id} card={card} />
+        <Card key={card._id} card={card} className="w-1/4" />
       ))}
     </div>
   );

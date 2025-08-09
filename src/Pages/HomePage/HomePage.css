@@ -1,4 +1,4 @@
-.intro {
+/* .intro {
   max-width: 1200px;
   margin: 5rem auto;
   text-align: center;
@@ -9,13 +9,7 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-.intro h1 {
-  display: block;
-  gap: 0;
 
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
 
 .intro p {
 
@@ -30,7 +24,7 @@
   margin-bottom: 3rem;
   z-index: 1;
 
-}
+} */
 
 .homeBackgroundLogo {
   position: absolute;

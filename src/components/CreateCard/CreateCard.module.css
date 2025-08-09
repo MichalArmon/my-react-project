@@ -9,7 +9,7 @@
   border: 1px solid #ffa94d;
   border-radius: 8px;
   width: 1000px;
-  margin-top: 150px;
+  margin-top: 20px;
 }
 
 
@@ -24,16 +24,11 @@
   justify-content: center;
   justify-items: center;
 
+
+
 }
 
-input,
-textarea {
-  width: 12rem;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
+
 
 .btnCreate {
   background-color: #ffa94d;
