@@ -84,4 +84,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+
+}
+
+.actionsIcon {
+  cursor: pointer;
+  color: #f59e0b
+}
+
+.actionsIcon:hover {
+  color: #c2410c;
 }

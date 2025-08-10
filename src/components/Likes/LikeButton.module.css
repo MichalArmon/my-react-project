@@ -10,14 +10,29 @@
   color: var(--icon-color);
 }
 
+/* 
 /* במצב לייק */
-.liked {
+/* .liked {
   --icon-color: #ffa94d;
-}
+} */
 
-ExpandableDescription
+
 
 /* במצב רגיל */
-.notLiked {
+/* .notLiked {
   --icon-color: #4a4a4a;
+
+
+
+}  */
+
+
+
+.actionsIcon {
+  cursor: pointer;
+  color: #f59e0b
+}
+
+.actionsIcon:hover {
+  color: #c2410c;
 }

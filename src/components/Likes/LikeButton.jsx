@@ -38,7 +38,10 @@ export default function LikeButton({ cardId }) {
       type="button"
       onClick={handleClick}
     >
-      <ion-icon name={isClicked ? "heart" : "heart-outline"}></ion-icon>
+      <ion-icon
+        className={styles.actionsIcon}
+        name={isClicked ? "heart" : "heart-outline"}
+      ></ion-icon>
     </button>
   );
 }

@@ -124,7 +124,7 @@ function PostProvider({ children }) {
   };
 
   // ✅  DELETE CARD
-  const deleteCard = async (id) => {
+  const deleteCard = async (id, bizNumber) => {
     setIsLoader(true);
     const token = localStorage.getItem("token");
 
@@ -135,14 +135,20 @@ function PostProvider({ children }) {
           method: "DELETE",
           headers: {
             "x-auth-token": token,
+            "Content-Type": "application/json",
           },
+          body: JSON.stringify({ bizNumber }),
         }
       );
 
       if (!res.ok)
         throw new Error("Unable to fetch the card from the server! ");
       const data = await res.json();
-      setCard(data);
+
+      setPosts((prev) => prev.filter((c) => c._id !== id));
+
+      if (card?._id === id) setCard(null);
+
       setError("");
       return data;
     } catch (err) {
