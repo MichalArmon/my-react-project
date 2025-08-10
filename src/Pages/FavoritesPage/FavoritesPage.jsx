@@ -17,7 +17,12 @@ export default function FavoritesPage() {
   }, [posts]);
 
   if (favoritePosts.length === 0)
-    return <p className={styles.empty}>לא הוספת מועדפים עדיין.</p>;
+    return (
+      <div className=" text-2xl mt-4 flex gap-2 items-center py-2 border-2 border-amber-500 rounded-md bg-amber-50 justify-center font-semibold text-stone-600 mx-auto w-[600px] ">
+        You didn't <strong className="text-amber-400">like</strong>
+        <ion-icon name="heart-outline"></ion-icon> any cards yet...
+      </div>
+    );
 
   return (
     <div className={styles.cardGrid}>

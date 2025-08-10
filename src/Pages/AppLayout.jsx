@@ -11,7 +11,7 @@ function AppLayout() {
           <Outlet />
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useUser } from "../../context/UserContext";
 import Spinner from "../../components/Spinner/Spinner";
+import Input from "../../ui/form/Input";
+import FormBtn from "../../ui/form/formBtn";
 
 function Login() {
   const [email, setEmail] = useState("mnewuser@example.com");
@@ -10,6 +12,7 @@ function Login() {
   const navigate = useNavigate();
 
   const {
+    snackbar,
     isSnackbar,
     snackbarText,
     isLoader,
@@ -42,6 +45,7 @@ function Login() {
       const decoded = await decodeToken(data);
       localStorage.setItem("userID", decoded._id);
       setUser(true);
+      snackbar("Signed in successfully!");
 
       if (!res.ok) {
         throw new Error(data.message || "Login failed");
@@ -65,30 +69,25 @@ function Login() {
       {isLoader && <Spinner />}
       <div className="formWarper">
         <form className="form" onSubmit={login}>
-          <div className="row">
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email"
-              id="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              required
-            />
-          </div>
-          <div className="row">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-            />
-          </div>
+          <Input
+            placeholder="Email"
+            type="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
 
-          <button type="submit" className="btnLogin">
-            Login
-          </button>
+          <Input
+            placeholder="Password"
+            type="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+
+          <FormBtn type="submit">Login</FormBtn>
         </form>
 
         <div>

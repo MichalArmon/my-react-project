@@ -96,7 +96,7 @@ function PostProvider({ children }) {
     }
   };
 
-  // ✅ שליפת כרטיס לפי ID
+  // ✅   GET BY ID
   const fetchCardById = async (id) => {
     setIsLoader(true);
     const token = localStorage.getItem("token");
@@ -118,6 +118,35 @@ function PostProvider({ children }) {
       return data;
     } catch (err) {
       setError(err.message || "שגיאה כללית");
+    } finally {
+      setIsLoader(false);
+    }
+  };
+
+  // ✅  DELETE CARD
+  const deleteCard = async (id) => {
+    setIsLoader(true);
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "x-auth-token": token,
+          },
+        }
+      );
+
+      if (!res.ok)
+        throw new Error("Unable to fetch the card from the server! ");
+      const data = await res.json();
+      setCard(data);
+      setError("");
+      return data;
+    } catch (err) {
+      setError(err.message || " ");
     } finally {
       setIsLoader(false);
     }
@@ -214,6 +243,7 @@ function PostProvider({ children }) {
     <PostContext.Provider
       value={{
         posts: searchedPosts,
+        deleteCard,
         setPosts,
         isLoader,
         setIsLoader,

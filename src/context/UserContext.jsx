@@ -35,22 +35,22 @@ function UserProvider({ children }) {
       email: form.email,
       password: form.password,
       name: {
-        first: form.firstName,
-        middle: "",
-        last: form.lastName,
+        first: form.name.first,
+        middle: form.name.middle,
+        last: form.name.last,
       },
       phone: form.phone,
       image: {
-        url: form.imageUrl,
-        alt: form.imageAlt,
+        url: form.image.url,
+        alt: form.image.alt,
       },
       address: {
         state: "IL",
         country: "Israel",
-        city: form.city,
-        street: form.street,
-        houseNumber: +form.houseNumber,
-        zip: +form.zip,
+        city: form.address.city,
+        street: form.address.street,
+        houseNumber: Number(form.address.houseNumber),
+        zip: Number(form.address.zip),
       },
       isBusiness: true,
     };
@@ -74,7 +74,7 @@ function UserProvider({ children }) {
 
       const data = await res.json();
       setTimeout(() => navigate("/login"), 1000);
-      snackbar("נרשמת בהצלחה 🎉");
+
       setUser(data);
       localStorage.setItem("userName", data.name.first);
       console.log(user);
@@ -135,9 +135,36 @@ function UserProvider({ children }) {
     return data;
   };
 
+  // DELETE USER✅
+
+  const deleteUser = async (id) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+
+    const res = await fetch(
+      `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message || "Failed to delete user");
+    }
+
+    return res.json();
+  };
+
   return (
     <UserContext.Provider
       value={{
+        deleteUser,
+        snackbar,
         setIsLoader,
         isLoader,
         loginUser,

@@ -32,6 +32,7 @@
 
 
 .formGrid {
+  margin-bottom: 1rem;
   width: 100%;
   gap: 1rem;
   column-gap: 3rem;
@@ -43,49 +44,14 @@
   flex-direction: column;
 }
 
-.btnCreate {
-  background-color: #ffa94d;
-  margin-top: 1rem;
-  display: block;
-  width: 100%;
-  padding: 0.8rem;
-  color: white;
-}
 
 
-
-
-
-
-
-
-
-.snackbar {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #3d3d3d;
-
-  color: white;
-  padding: 14px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 9999;
-  opacity: 0;
-  animation: fadein 0.3s ease-out forwards, fadeout 0.3s ease-in 1.7s forwards;
-}
-
-@keyframes fadein {
-  to {
-    opacity: 1;
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
   }
-}
 
-@keyframes fadeout {
-  to {
-    opacity: 0;
+  .signupForm {
+    width: 90vw;
   }
 }

@@ -1,4 +1,4 @@
-function Input({ type, name, label, required, onChange, placeholder }) {
+function Input({ type, name, label, required, onChange, placeholder, value }) {
   return (
     <input
       className="w-48 p-[10px] border border-amber-400 rounded bg-white/80 placeholder:text-sm placeholder:text-stone-400"
@@ -8,6 +8,7 @@ function Input({ type, name, label, required, onChange, placeholder }) {
       type={type}
       onChange={onChange}
       placeholder={placeholder}
+      value={value}
     />
   );
 }

@@ -31,7 +31,7 @@
 }
 
 .modeIcon {
-  color: white;
+  color: #fafaf9;
   padding: 0;
 }
 
@@ -45,9 +45,9 @@
 
 .btnLogin {
   font-weight: bold;
-  border: 1px solid #ffffff;
-  width: 40px;
-  height: 40px;
+  border: 2px solid #fafaf9;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -65,12 +65,14 @@
 } */
 
 .profileIcon {
-  border: 1px solid #ffffff;
-  width: 40px;
-  height: 40px;
+
+  border: 2px solid #fafaf9;
+  width: 42px;
+  height: 42px;
+  aspect-ratio: 1;
   border-radius: 50%;
-  background-color: #84ce7d;
-  color: white;
+  background-color: #22c55e;
+  color: #fafaf9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +82,7 @@
 
 .addCard {
 
-  color: white;
+  color: #fafaf9;
   border-radius: 8px;
   border: 1px solid #ffa94d;
   background-color: #ffa94d;

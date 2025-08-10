@@ -5,7 +5,7 @@ import ExpandableDescription from "../ExpandableDescription/ExpandableDescriptio
 import { useUser } from "../../context/UserContext";
 
 export default function Card({ card }) {
-  const { user } = useUser();
+  const { user, deleteCard } = useUser();
 
   const isOwner = user?._id === card.user_id;
   // console.log("user._id:", user?._id);
