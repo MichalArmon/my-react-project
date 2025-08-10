@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useUser } from "./UserContext";
+const apiUrl = import.meta.env.VITE_API_URL;
+console.log("API URL:", apiUrl);
 
 const PostContext = createContext();
 
@@ -73,13 +75,10 @@ function PostProvider({ children }) {
     const headers = token ? { "x-auth-token": token } : {};
 
     try {
-      const res = await fetch(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
-        {
-          method: "GET",
-          headers,
-        }
-      );
+      const res = await fetch(`${apiUrl}/cards`, {
+        method: "GET",
+        headers,
+      });
 
       if (!res.ok) {
         const errorData = await res.json();
@@ -102,14 +101,11 @@ function PostProvider({ children }) {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
-        {
-          headers: {
-            "x-auth-token": token,
-          },
-        }
-      );
+      const res = await fetch(`${apiUrl}/cards/${id}`, {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
 
       if (!res.ok) throw new Error("כשל בקבלת הכרטיס מהשרת");
       const data = await res.json();
@@ -129,17 +125,14 @@ function PostProvider({ children }) {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "x-auth-token": token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ bizNumber }),
-        }
-      );
+      const res = await fetch(`${apiUrl}/cards/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ bizNumber }),
+      });
 
       if (!res.ok)
         throw new Error("Unable to fetch the card from the server! ");
@@ -161,17 +154,14 @@ function PostProvider({ children }) {
   // ✅ יצירת כרטיס חדש
   async function addNewCard(cardData, token) {
     try {
-      const res = await fetch(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": token,
-          },
-          body: JSON.stringify(cardData),
-        }
-      );
+      const res = await fetch(`${apiUrl}/cards`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": token,
+        },
+        body: JSON.stringify(cardData),
+      });
 
       if (!res.ok) {
         const contentType = res.headers.get("content-type");
@@ -207,17 +197,14 @@ function PostProvider({ children }) {
     try {
       setIsLoader(true);
 
-      const res = await fetch(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": token,
-          },
-          body: JSON.stringify(updatedData),
-        }
-      );
+      const res = await fetch(`${apiUrl}/cards/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": token,
+        },
+        body: JSON.stringify(updatedData),
+      });
 
       let result;
       const contentType = res.headers.get("content-type");

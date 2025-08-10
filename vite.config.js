@@ -5,6 +5,4 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "tailwindcss";
 import postcss from "./postcss.config.cjs";
 
-export default defineConfig({
-  plugins: [react()],
-});
+export default defineConfig({ base: "/my-react-project/", plugins: [react()] });

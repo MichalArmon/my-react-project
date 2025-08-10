@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+const apiUrl = import.meta.env.VITE_API_URL;
+console.log("API URL:", apiUrl);
 
 const UserContext = createContext();
 
@@ -56,16 +58,13 @@ function UserProvider({ children }) {
     };
 
     try {
-      const res = await fetch(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        }
-      );
+      const res = await fetch(`${apiUrl}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
 
       if (!res.ok) {
         const errMsg = await res.text();
@@ -101,15 +100,12 @@ function UserProvider({ children }) {
   const getUser = async (id) => {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(
-      `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${id}`,
-      {
-        headers: {
-          "x-auth-token": token,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${apiUrl}/users/${id}`, {
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+    });
 
     const data = await res.json();
     console.log("🎯 getUser data:", data);
@@ -118,17 +114,14 @@ function UserProvider({ children }) {
 
   // UPDATE USER✅
   const updateUser = async (token, id, updatedUser) => {
-    const res = await fetch(
-      `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "x-auth-token": token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
-      }
-    );
+    const res = await fetch(`${apiUrl}/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    });
 
     const data = await res.json();
     console.log("🎯 updated data:", data);
@@ -141,16 +134,13 @@ function UserProvider({ children }) {
     const token = localStorage.getItem("token");
     if (!token) throw new Error("No token found");
 
-    const res = await fetch(
-      `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "x-auth-token": token,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${apiUrl}/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) {
       const error = await res.json();
