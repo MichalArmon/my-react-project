@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "./CreateCard.module.css";
 import { usePosts } from "../../context/PostContext";
 import { useNavigate } from "react-router-dom";
+import Input from "../../ui/form/Input";
+import FormBtn from "../../ui/form/formBtn";
 useNavigate;
 export default function CreateCard() {
   const { addNewCard } = usePosts();
@@ -109,10 +111,12 @@ export default function CreateCard() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <h2>Create new card</h2>
-      <div className={styles.formGrid}>
-        <input
+    <main className={styles.createCardForm}>
+      <h1 className="uppercase  text-stone-900 text-center mb-3 text-2xl md:text-[24px]">
+        Create new card
+      </h1>
+      <form className={styles.formGrid} onSubmit={handleSubmit}>
+        <Input
           type="text"
           name="title"
           placeholder="Business name"
@@ -121,7 +125,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="text"
           name="subtitle"
           placeholder="Subtitle"
@@ -130,6 +134,7 @@ export default function CreateCard() {
         />
 
         <textarea
+          className="w-48 p-[10px] border border-amber-400 rounded bg-white/80 placeholder:text-sm placeholder:text-stone-400"
           name="description"
           placeholder="Description"
           value={form.description}
@@ -138,7 +143,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="text"
           name="phone"
           placeholder="Phone"
@@ -147,7 +152,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="email"
           name="email"
           placeholder="Email"
@@ -156,7 +161,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="url"
           name="image.url"
           placeholder="Image URL"
@@ -164,7 +169,7 @@ export default function CreateCard() {
           onChange={handleChange}
         />
 
-        <input
+        <Input
           type="text"
           name="image.alt"
           placeholder="Image alt text"
@@ -172,7 +177,7 @@ export default function CreateCard() {
           onChange={handleChange}
         />
 
-        <input
+        <Input
           type="text"
           name="address.country"
           placeholder="Country"
@@ -181,7 +186,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="text"
           name="address.state"
           placeholder="State"
@@ -189,7 +194,7 @@ export default function CreateCard() {
           onChange={handleChange}
         />
 
-        <input
+        <Input
           type="text"
           name="address.city"
           placeholder="City"
@@ -198,7 +203,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="text"
           name="address.street"
           placeholder="Street"
@@ -207,7 +212,7 @@ export default function CreateCard() {
           required
         />
 
-        <input
+        <Input
           type="text"
           name="address.houseNumber"
           placeholder="House number"
@@ -215,7 +220,7 @@ export default function CreateCard() {
           onChange={handleChange}
         />
 
-        <input
+        <Input
           className={styles.flexend}
           type="text"
           name="address.zip"
@@ -223,11 +228,10 @@ export default function CreateCard() {
           value={form.address.zip}
           onChange={handleChange}
         />
-      </div>
-
-      <button type="submit" className={styles.btnCreate}>
-        Create card
-      </button>
-    </form>
+        <FormBtn className={styles.btnCreate} type="submit">
+          Create card
+        </FormBtn>
+      </form>
+    </main>
   );
 }

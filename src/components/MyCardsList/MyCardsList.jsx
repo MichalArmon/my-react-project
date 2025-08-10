@@ -9,15 +9,7 @@ function MyCardsList() {
   const { posts, myCards } = usePosts();
   const { user } = useUser();
 
-  // const userID = localStorage.getItem("userID");
-  // false;
-  // const user = JSON.parse(localStorage.getItem("user"));
-
-  // אם המשתמש לא מחובר
   if (!user) return <p className={styles.snackbar}> You are not logged in!</p>;
-
-  // סינון רק כרטיסים שנוצרו על ידי המשתמש הנוכחי
-  // const myCards = posts.filter((post) => post.user_id === userID);
 
   if (myCards.length === 0)
     return <p className={styles.snackbar}>create your first card!</p>;

@@ -1,45 +1,38 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 1rem;
-
-  margin: 0 auto;
-  background-color: #fff7f0;
-  border: 1px solid #ffa94d;
-  border-radius: 8px;
-  width: 1000px;
-  margin-top: 20px;
-}
-
-
-
 .formGrid {
+  margin-bottom: 1rem;
   width: 100%;
-
   gap: 1rem;
+  column-gap: 3rem;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: center;
-  justify-items: center;
-
-
-
+  justify-content: space-between;
+  flex-direction: column;
 }
-
 
 
 .btnCreate {
-  background-color: #ffa94d;
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
+  grid-column: 1/3;
 }
 
-h2 {
-  text-align: center;
+
+
+.createCardForm {
+
+  max-width: 700px;
+  border-radius: 7px;
+  margin: 2rem auto;
+
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fde68a;
+  border: 1px solid #eab308;
+  padding: 2rem 2rem;
+
+
+
 }
